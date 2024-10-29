@@ -2,12 +2,18 @@ import Image from "next/image";
 import React from "react"
 import logo from "./../logo.png";
 
-const SideBar = ({sidebarOptions,selectedOption,setSelectedOption} : 
-    {sidebarOptions: string[],
+const SideBar = ({selectedOption,setSelectedOption} : 
+    {
     selectedOption:string,
     setSelectedOption: (option:string) => void
     }
 ) => {
+  const sidebarOptions = [
+    "Blend Planning",
+    "Procurement Planning",
+    "Commercial-Calculator",
+    "Parameter Setting"
+  ]
   return (
     <div>
       <aside className="w-64 h-full bg-gray-800 text-white p-4">
