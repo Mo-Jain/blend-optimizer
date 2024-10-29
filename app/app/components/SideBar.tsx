@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react"
+import logo from "./../logo.png";
 
 const SideBar = ({sidebarOptions,selectedOption,setSelectedOption} : 
     {sidebarOptions: string[],
@@ -10,6 +12,7 @@ const SideBar = ({sidebarOptions,selectedOption,setSelectedOption} :
     <div>
       <aside className="w-64 h-full bg-gray-800 text-white p-4">
         <nav className="space-y-2">
+          <Image src={logo} alt={"logo"} objectPosition="left"/>
           {sidebarOptions.map((option) => (
             <a
               key={option}

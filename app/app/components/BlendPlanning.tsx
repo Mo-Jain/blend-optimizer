@@ -1,12 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import AddLiveData from "./AddLiveData";
 import DailyRun from "./DailyRun";
 import Parameters from "./Parameters";
-import AddLiveData from "./AddLiveData";
-import DailyBun from "./DailyBun";
-import Barameters from "./Barameters";
-
 
 const BlendPlanning = () => {
     const [selectedTab, setSelectedTab] = useState("Daily run")
@@ -67,10 +64,10 @@ const BlendPlanning = () => {
 
                 {/* Tab content */}
                 {selectedTab === "Daily run" && (
-                <DailyBun dailyRunData={dailyRunData}/>
+                <DailyRun dailyRunData={dailyRunData}/>
                 )}
                 {selectedTab === "Parameters" && (
-                <Barameters parametersData={parametersData}/>
+                <Parameters parametersData={parametersData}/>
                 )}
                 {selectedTab === "Add Live Data" && (
                     <AddLiveData inventoryData={inventoryData} blendsData={blendsData} procurementData={procurementData} />

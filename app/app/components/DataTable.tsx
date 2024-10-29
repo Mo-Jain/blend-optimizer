@@ -19,15 +19,15 @@ type DataTableProps = {
 const DataTable: React.FC<DataTableProps> = ({ headers, data, actions,actionName,checks,checkName }) => (
     <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-lg shadow">
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-gray-200 dark:bg-gray-800 font-bold">
           <TableRow className="border-gray-200 dark:border-gray-700">
             {headers.map((header, index) => (
-              <TableHead key={index} className="text-gray-700 dark:text-gray-300">
+              <TableHead key={index} className="px-3 text-gray-700 dark:text-gray-300">
                 {header}
               </TableHead>
             ))}
-            {actions && <TableHead className="text-gray-700 dark:text-gray-300">{actionName}</TableHead>}
-            {checks && <TableHead className="text-gray-700 dark:text-gray-300">{checkName}</TableHead>}
+            {actions && <TableHead className="px-3 text-gray-700 dark:text-gray-300">{actionName}</TableHead>}
+            {checks && <TableHead className="px-3 text-gray-700 dark:text-gray-300">{checkName}</TableHead>}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -36,12 +36,12 @@ const DataTable: React.FC<DataTableProps> = ({ headers, data, actions,actionName
               {Object.entries(row)
               .filter(([key])=>key != "id")
               .map(([key, value]) => (
-                <TableCell key={key} className="text-gray-700 dark:text-gray-300">
+                <TableCell key={key} className="text-gray-700 dark:text-gray-300 px-3">
                     {value}
                 </TableCell>
                 ))}
-              {actions && <TableCell>{actions()}</TableCell>}
-              {checks && <TableCell>{checks()}</TableCell>}
+              {actions && <TableCell className="text-gray-700 dark:text-gray-300 px-3">{actions()}</TableCell>}
+              {checks && <TableCell className="text-gray-700 dark:text-gray-300 px-3">{checks()}</TableCell>}
             </TableRow>
           ))}
         </TableBody>
