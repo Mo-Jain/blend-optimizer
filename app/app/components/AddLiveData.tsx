@@ -1,4 +1,4 @@
-import { Moon, Sun, FileText, Download, Info, Check, Search, Trash2, Plus } from "lucide-react"
+import { Trash2, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react";
 import DataTable from "./DataTable";

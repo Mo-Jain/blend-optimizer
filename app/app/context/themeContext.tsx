@@ -20,21 +20,22 @@ export function MyThemeContextProvider(
     initialThemeHandler();
   }, []);
 
-  function isLocalStorageEmpty(): boolean {
-    return !localStorage.getItem("isDarkTheme");
-  }
+  useEffect(() => {
+    // Apply the theme class directly to the <body> element based on isDarkTheme state
+    if (isDarkTheme) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkTheme]);
 
   function initialThemeHandler(): void {
-    if (isLocalStorageEmpty()) {
-      localStorage.setItem("isDarkTheme", `true`);
-      document.body.classList.add("dark");
+    const storedTheme = localStorage.getItem("isDarkTheme");
+    if (storedTheme === null) {
+      localStorage.setItem("isDarkTheme", JSON.stringify(true));
       setIsDarkTheme(true);
     } else {
-      const storedTheme = JSON.parse(localStorage.getItem("isDarkTheme")!);
-      if (storedTheme) {
-        document.body.classList.add("dark");
-      }
-      setIsDarkTheme(storedTheme);
+      setIsDarkTheme(JSON.parse(storedTheme));
     }
   }
 

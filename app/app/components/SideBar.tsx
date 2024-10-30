@@ -1,24 +1,24 @@
 import Image from "next/image";
-import React from "react"
+import React from "react";
 import logo from "./../logo.png";
+import { useRecoilState } from "recoil";
+import { selectedOptions } from "../store/selectedOption";
 
-const SideBar = ({selectedOption,setSelectedOption} : 
-    {
-    selectedOption:string,
-    setSelectedOption: (option:string) => void
-    }
-) => {
+const SideBar = () => {
+  const [selectedOption, setSelectedOption] = useRecoilState(selectedOptions);
+
   const sidebarOptions = [
     "Blend Planning",
     "Procurement Planning",
     "Commercial-Calculator",
-    "Parameter Setting"
-  ]
+    "Parameter Setting",
+  ];
+
   return (
     <div>
       <aside className="w-64 h-full bg-gray-800 text-white p-4">
         <nav className="space-y-2">
-          <Image src={logo} alt={"logo"} objectPosition="left"/>
+          <Image src={logo} alt="logo" style={{ objectPosition: "left" }} />
           {sidebarOptions.map((option) => (
             <a
               key={option}
@@ -28,7 +28,10 @@ const SideBar = ({selectedOption,setSelectedOption} :
                   ? "bg-gray-700 text-white"
                   : "hover:bg-gray-700"
               }`}
-              onClick={() => setSelectedOption(option)}
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedOption(option);
+              }}
             >
               {option}
             </a>
@@ -36,7 +39,7 @@ const SideBar = ({selectedOption,setSelectedOption} :
         </nav>
       </aside>
     </div>
-  )
+  );
 };
 
 export default SideBar;
