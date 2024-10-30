@@ -3,16 +3,32 @@ import React from "react";
 import logo from "./../logo.png";
 import { useRecoilState } from "recoil";
 import { selectedOptions } from "../store/selectedOption";
+import { useRouter } from "next/navigation";
+
+export enum options {
+  BlendPlanning = "Blend Planning",
+  ProcurementPlanning = "Procurement Planning",
+  CommercialCalculator = "Commercial-Calculator",
+  ParameterSetting = "Parameter Setting",
+}
 
 const SideBar = () => {
   const [selectedOption, setSelectedOption] = useRecoilState(selectedOptions);
 
+  const router = useRouter();
+
+  console.log(selectedOption);
+
   const sidebarOptions = [
-    "Blend Planning",
-    "Procurement Planning",
-    "Commercial-Calculator",
-    "Parameter Setting",
+    options.BlendPlanning,
+    options.ProcurementPlanning,
+    options.CommercialCalculator,
+    options.ParameterSetting,
   ];
+
+  function handleSelection(option:string){
+    setSelectedOption(option)
+  }
 
   return (
     <div>
@@ -20,9 +36,8 @@ const SideBar = () => {
         <nav className="space-y-2">
           <Image src={logo} alt="logo" style={{ objectPosition: "left" }} />
           {sidebarOptions.map((option) => (
-            <a
+            <div
               key={option}
-              href="#"
               className={`block py-2 px-4 rounded transition-colors ${
                 selectedOption === option
                   ? "bg-gray-700 text-white"
@@ -30,11 +45,12 @@ const SideBar = () => {
               }`}
               onClick={(e) => {
                 e.preventDefault();
-                setSelectedOption(option);
+                console.log("option is "+ option+ "selected option is"+selectedOption);
+                handleSelection(option);
               }}
             >
               {option}
-            </a>
+            </div>
           ))}
         </nav>
       </aside>
