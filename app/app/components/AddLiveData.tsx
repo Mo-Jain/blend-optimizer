@@ -47,7 +47,7 @@ const AddLiveData = ({inventoryData,blendsData,procurementData}
                 </div>
                 {selectedLiveDataTab === "Inventory" && (
                 <div className="space-y-4">
-                    <Button className="mb-4">
+                    <Button className="bg-blue-500 text-white hover:bg-blue-600 mb-4">
                     <Plus className="mr-2 h-4 w-4" /> Add Inventory
                     </Button>
                     <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-lg shadow">
@@ -66,7 +66,7 @@ const AddLiveData = ({inventoryData,blendsData,procurementData}
                 )}
                 {selectedLiveDataTab === "Blends" && (
                 <div className="space-y-4">
-                    <Button className="mb-4">
+                    <Button className="mb-4 bg-blue-500 text-white hover:bg-blue-600">
                     <Plus className="mr-2 h-4 w-4" /> Add Blend
                     </Button>
                     <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-lg shadow">
@@ -79,7 +79,7 @@ const AddLiveData = ({inventoryData,blendsData,procurementData}
                 )}
                 {selectedLiveDataTab === "Procurement" && (
                 <div className="space-y-4">
-                    <Button className="mb-4">
+                    <Button className="mb-4 bg-blue-500 text-white hover:bg-blue-600">
                     <Plus className="mr-2 h-4 w-4" /> Add Procurement
                     </Button>
                     <div className="overflow-x-auto bg-white dark:bg-gray-900 rounded-lg shadow">

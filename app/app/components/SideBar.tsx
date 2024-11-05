@@ -14,10 +14,7 @@ export enum options {
 
 const SideBar = () => {
   const [selectedOption, setSelectedOption] = useRecoilState(selectedOptions);
-
   const router = useRouter();
-
-  console.log(selectedOption);
 
   const sidebarOptions = [
     options.BlendPlanning,
@@ -26,26 +23,25 @@ const SideBar = () => {
     options.ParameterSetting,
   ];
 
-  function handleSelection(option:string){
-    setSelectedOption(option)
+  function handleSelection(option: string) {
+    setSelectedOption(option);
   }
 
   return (
     <div>
-      <aside className="w-64 h-full bg-gray-800 text-white p-4">
+      <aside className="fixed top-0 left-0 w-72 h-full bg-gray-800 text-white p-4 overflow-y-auto">
         <nav className="space-y-2">
           <Image src={logo} alt="logo" style={{ objectPosition: "left" }} />
           {sidebarOptions.map((option) => (
             <div
               key={option}
-              className={`block py-2 px-4 rounded transition-colors ${
+              className={`block py-2 px-4 rounded transition-colors cursor-pointer ${
                 selectedOption === option
                   ? "bg-gray-700 text-white"
                   : "hover:bg-gray-700"
               }`}
               onClick={(e) => {
                 e.preventDefault();
-                console.log("option is "+ option+ "selected option is"+selectedOption);
                 handleSelection(option);
               }}
             >
@@ -54,6 +50,9 @@ const SideBar = () => {
           ))}
         </nav>
       </aside>
+      <main className="ml-64 p-4">
+        {/* Other content goes here */}
+      </main>
     </div>
   );
 };
